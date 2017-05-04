@@ -328,8 +328,8 @@ let s:mapping={
 \}
 
 for key in keys(s:mapping)
-    let l:kkk = strpart(key, 1)
-    execute 'inoreab '.l:kkk.' <c-r>=<sid>Expr("'.l:kkk.'", "")<CR>'.s:mapping[key]
+    let s:k = strpart(key, 1)
+    execute 'inoreab '.s:k.' <c-r>=<sid>Expr("'.s:k.'", "")<CR>'.s:mapping[key]
 endfor
 
 augroup UNILATEX
