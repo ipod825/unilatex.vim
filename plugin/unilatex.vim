@@ -1,10 +1,4 @@
 " Vim file plugin for editing LaTeX files a unicode view.
-" Last Change: 2002 Apr 29
-" Version: 1.1
-" Maintainer: Jos van den Oever <oever@fenk.wau.nl>
-" Helpful tips: Benji Fisher,  Antoine J. Mechelynck and Tomas Zellerin
-"
-
 
 
 if exists("s:loaded_unilatex")
@@ -334,14 +328,24 @@ let s:mapping={
 \}
 
 for key in keys(s:mapping)
-    execute "iabbrev <buffer> ".key." ".s:mapping[key]  
+    let l:kkk = strpart(key, 1)
+    execute 'inoreab '.l:kkk.' <c-r>=<sid>Expr("'.l:kkk.'", "")<CR>'.s:mapping[key]
 endfor
 
-augroup UNILATEX 
+augroup UNILATEX
 	autocmd BufReadPost *.tex cal s:LaTeXtoUTF8()
 	autocmd BufWritePre *.tex cal s:UTF8toLaTeX()
 	autocmd BufWritePost *.tex cal s:LaTeXtoUTF8()
 augroup END
+
+" http://stackoverflow.com/questions/1677575/using-backslashes-in-vim-abbreviations
+function! s:Expr(default, repl)
+    if getline('.')[col('.')-2]=='\'
+        return "\<bs>".a:repl
+    else
+        return a:default
+    endif
+endfunction
 
 " function to convert utf8 symbols to latex symbols
 function s:UTF8toLaTeX()
