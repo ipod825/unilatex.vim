@@ -1,12 +1,2 @@
-This is a mirror of http://www.vim.org/scripts/script.php?script_id=284
-
-Vim supports unicode since version 6. This means it's possible to display many mathmatical symbols in vim. Writing LaTeX texts can now be much easier. To display unicode symbols while editing LaTeX documents, I've written a plugin for vim.
-
-Screenshot:
-http://www.fenk.wau.nl/~oever/software/vim/
-
-What does the plugin do?
-
-- Convert all symbols like \alpha to the unicode symbol α when reading a LaTeX file.
-- Convert these commands when typing them.
-- Convert the unicode symbols back to LaTeX when saving the document.
+Modified from https://github.com/vim-scripts/unilatex.vim
+Refactor by using one dict to keep mapping instead of repeating the mapping again and again.
