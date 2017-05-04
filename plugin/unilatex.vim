@@ -327,23 +327,23 @@ let s:mapping={
 \ '\eth':'ð',
 \}
 
-for key in keys(s:mapping)
-    let s:k = strpart(key, 1)
-    execute 'inoreab '.s:k.' <c-r>=<sid>Expr("'.s:k.'", "")<CR>'.s:mapping[key]
-endfor
-
 augroup UNILATEX
 	autocmd BufReadPost *.tex cal s:LaTeXtoUTF8()
 	autocmd BufWritePre *.tex cal s:UTF8toLaTeX()
 	autocmd BufWritePost *.tex cal s:LaTeXtoUTF8()
 augroup END
 
+for key in keys(s:mapping)
+    let s:k = strpart(key, 1)
+    execute 'inoreab '.s:k.' <c-r>=<sid>CheckSlash("'.s:k.'")<CR>'.s:mapping[key]
+endfor
+
 " http://stackoverflow.com/questions/1677575/using-backslashes-in-vim-abbreviations
-function! s:Expr(default, repl)
+function! s:CheckSlash(origin)
     if getline('.')[col('.')-2]=='\'
-        return "\<bs>".a:repl
+        return "\<bs>"
     else
-        return a:default
+        return a:origin
     endif
 endfunction
 
