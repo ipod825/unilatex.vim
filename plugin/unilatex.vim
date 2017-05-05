@@ -212,6 +212,7 @@ let s:mapping={
 \ '\curlyeqprec':'⋞',
 \ '\precsim':'≾',
 \ '\Subset':'⋐',
+\ '\Sigma':'Σ',
 \ '\therefore':'∴',
 \ '\smallsmile':'⌣',
 \ '\vartriangleleft':'⊲',
