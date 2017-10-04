@@ -355,7 +355,7 @@ function s:UTF8toLaTeX()
 	let s:column = col(".")
 	" convert unicode to latex commands
     for key in keys(s:mapping)
-        execute '%s/'.s:mapping[key].'/{\'.key.'}/eg'
+        execute '%s/'.s:mapping[key].'/\'.key.'/eg'
     endfor
 	" restore old encoding before writing
 	let &l:fileencoding = s:oldencoding
