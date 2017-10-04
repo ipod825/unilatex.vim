@@ -382,3 +382,4 @@ function s:LaTeXtoUTF8()
 	call cursor(s:line,s:column)
 endfunction
 
+do UNILATEX BufRead
